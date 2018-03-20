@@ -28,7 +28,7 @@ public class XHListViewAndroid extends ListView {
     private int startX = 0;
     private int startY = 0;
 
-    @Override
+      @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
 
         boolean isTrue = false;
@@ -36,7 +36,7 @@ public class XHListViewAndroid extends ListView {
         switch(ev.getAction()){
             case MotionEvent.ACTION_DOWN:
 
-                    startX = (int) ev.getX();
+                startX = (int) ev.getX();
                 startY = (int) ev.getY();
                 break;
 
@@ -54,11 +54,11 @@ public class XHListViewAndroid extends ListView {
 
                 if(Math.abs(midY) > Math.abs(mid)){
                     Log.e("---", "onInterceptTouchEvent: " + "上下" );
-                    isTrue =  true;
+
 
                 }else{
                     Log.e("---", "onInterceptTouchEvent: " + "左右" );
-                    isTrue =  false;
+                    return false;
                 }
 
 
@@ -73,7 +73,9 @@ public class XHListViewAndroid extends ListView {
                 break;
 
         }
-        return isTrue;
+
+        Log.e("---", "onInterceptTouchEvent: " + isTrue );
+        return super.onInterceptTouchEvent(ev);
     }
 
 }
